@@ -1,0 +1,198 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root{
+  font-size: 62.5%;
+  
+  /* variáveis */
+  
+  --fc-text: hsla(240, 6%, 21%, 1);
+  --body-bg: white;
+  --input-bg: hsla(240, 9%, 89%, 1);
+  --sound-icon: hsla(240, 6%, 21%, 1);
+  --inputchecked-bg: hsla(194, 97%, 31%, 1);
+  --selected-fill-color: white;
+  
+}
+
+.darkModeStyle{
+  --fc-text: white;
+  --body-bg: #121214;
+  --input-bg: #29292E;
+  --sound-icon: rgb(224, 224, 229);
+  --inputchecked-bg:  #0A3442;;
+  --selected-fill-color: white;
+}
+
+
+/* Toggle functions */
+
+.hide{
+  display: none;
+}
+
+.color {
+  fill: var(--selected-fill-color);
+}
+
+svg path {
+  fill: var(--sound-icon);
+}
+
+.selected{
+  background: var(--inputchecked-bg) !important; /* O !important concede prioridade para a declaração no CSS */
+}
+
+.container{
+  background: var(--body-bg);
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+main{
+  display: flex;
+  gap: 19.7rem;
+  align-items: center;
+}
+
+main .timer{
+  display: flex;
+
+  font-family: 'Roboto', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12.6rem;
+
+  color: var(--fc-text);
+  line-height: 14.8rem;
+  text-align: center;
+}
+
+.timer-container{
+  text-align: center;
+  animation: popLeft .5s 1s forwards;
+}
+
+.setTimer button + button{
+  margin-left: 4rem;
+}
+
+.setTimer button{
+  border: none;
+  background: transparent;
+
+  cursor: pointer;
+}
+
+
+.sound-container{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3.2rem;
+
+  animation: popRight .5s 1s forwards;
+}
+
+.sound-container button{
+  appearance: none;
+  
+  padding: 2.4rem 4.6rem 7.2rem 4.6rem;
+  background: var(--input-bg);
+  border-radius: 24px;
+  border: none;
+  
+  cursor: pointer;
+  transition: transform .3s;
+  transition: .3s;
+
+  position: relative;
+}
+
+button:hover{
+  transform: scale(1.1);
+}
+
+.soundControls{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.soundControls input{
+  z-index: 1;
+  position: absolute;
+
+  background: var(--input-bg);
+  border-radius: 24px;
+  margin-top: 11.2rem;
+  transition: transform .3s;
+}
+
+/* DarkMode */
+
+.toggleMode{
+  position: fixed;
+  top: 6rem;
+  right: 6rem;
+
+  animation: popRight .5s 1s forwards;
+}
+
+.toggleMode button{
+  background: transparent;
+  border: none;
+
+  cursor: pointer;
+  transition: transform .3s;
+}
+
+
+input[type="range" i] {
+  appearance: none;
+  width: 9rem;
+  height: .4rem;
+  background: var(--sound-icon);
+}
+
+input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 1.6rem;
+  height: 1.6rem;
+  left: 0;
+  top: calc(50% - 1.6rem/2);
+  border-radius: 10px;
+  background-color: var(--sound-icon);
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* ANIMATIONS */
+
+@keyframes popRight {
+  0%{
+    transform: translateX(20rem);
+  }
+
+  100%{
+    transform: translateX(0);
+  }
+  
+}
+
+@keyframes popLeft {
+  0%{
+    transform: translateX(-20rem);
+  }
+
+  100%{
+    transform: translateX(0);
+  }
+  
+}
+
+
+
